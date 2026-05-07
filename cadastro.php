@@ -1,3 +1,25 @@
+<?php
+    $mensagem= ""; 
+    $tipoMensagem= "";
+    $host= "aws-1-sa-east-1.pooler.supabase.com";
+    $port= "6543";
+    $database = "postgres";
+    $user= "postgres.aqhrvgkxcwghinpmdkwp";
+    $password= "123helo@Helo";
+
+try{
+    $dsn ="pgsql:host=$host;port=$port;dbname=$database;sslmode=require";
+    $pdo = new PDO($dsn, $user, $password);
+    $mensagem = "Conectado com sucesso!";
+    $tipoMensagem = "Sucesso!";
+}catch(PDOException $e){
+    die("Erro ao conectar no Supabase: " . $e->getMessage());
+    $mensagem = "Falha ao conectar ao Supabase! ";
+    
+    $tipoMensagem ="Erro!";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,6 +28,24 @@
     <title>Sistema de Login</title>
 </head>
 <body>
-
+    <h1>Cadastro</h1>
+    <form method="post" action="">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome"><br/>
+        <label for="nome">Email</label>
+        <input type="email" id="email" name="email"><br/>
+        <label for="senha">Senha</label>
+        <input type="passaword" id="senha" name="senha"><br/>
+        <label for="senha">Repetir Senha</label>
+        <input type="passaword" id="reptsenha" name="reptsenha"><br/>
+        <input type="submit" values="Entrar"><br/>
+        <input type="reset" values="limpar"><br/>
+        <a href="index,php">Já é de casa? Entre</a>
+    </form>   
+    <?php if($mensagem !== ""):?>
+    <script>
+        alert(<?= json_encode($mensagem)?>)
+    </script>
+      <?php endif; ?>                        
 </body>
 </html>
