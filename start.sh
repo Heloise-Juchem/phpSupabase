@@ -17,5 +17,9 @@ done
 echo "PHP-FPM iniciado com sucesso."
 echo "Iniciando Apache na porta 5000..."
 
-# Start Apache in foreground
-httpd -f "$(pwd)/apache.conf" -DFOREGROUND
+# Start Apache in a new session to avoid receiving terminal signals (SIGWINCH)
+setsid httpd -f "$(pwd)/apache.conf" -DFOREGROUND &
+APACHE_PID=$!
+
+# Keep script alive while Apache runs
+wait $APACHE_PID

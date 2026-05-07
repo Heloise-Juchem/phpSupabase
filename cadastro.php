@@ -6,10 +6,6 @@
     <title>Sistema de Login</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="post" action="">
-<label for="email">Email</label>
-        <input type="email" id="email" name="email"><br/>
-    </form>    
+
 </body>
 </html>
