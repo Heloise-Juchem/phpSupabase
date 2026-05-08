@@ -18,6 +18,28 @@ try{
     
     $tipoMensagem ="Erro!";
 }
+   
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+        $reptsenha = $_POST['reptsenha'];
+
+        if($senha !== $reptsenha){
+            $mensagem = "As senhas não conferem!";
+            $tipoMensagem = "Erro!";
+        }else{
+        $sql = "INSERT INTO cadastro (nome, email, senha) VALUES (:nome, :email, :senha)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+        ':nome' => $nome,
+        ':email' => $email,
+        ':senha' => $senha              
+        ]);
+        $mensagem = "Cadastro realizado com sucesso!";
+        $tipoMensagem = "Sucesso!";
+    }
+    }
 ?>
 
 <!DOCTYPE html>
