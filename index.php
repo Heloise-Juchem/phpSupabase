@@ -1,11 +1,11 @@
 <?php
     $mensagem = "";
     $tipoMensagem = "";
-    $host = "";
+    $host = "aws-1-sa-east-1.pooler.supabase.com";
     $port = "6543";
     $database = "postgres";
-    $user = "postgres.tlitabytsmcfrbhdetno";
-    $password = "";
+    $user = "postgres.aqhrvgkxcwghinpmdkwp";
+    $password = "123helo@Helo";
 
     try{
         $dsn = "pgsql:host=$host;port=$port;dbname=$database;sslmode=require";
